@@ -1,0 +1,9 @@
+{
+  "ingredients": {
+    "food_type": "xy177.cuisinedelightlegacy.content.recipe.FoodTypeIngredient$Factory",
+    "mushroom": "xy177.cuisinedelightlegacy.compat.FoodDelight$MushroomIngredient"
+  },
+  "recipes": {
+    "plate_cuisine": "xy177.cuisinedelightlegacy.content.recipe.PlateCuisineRecipe$Factory"
+  }
+}

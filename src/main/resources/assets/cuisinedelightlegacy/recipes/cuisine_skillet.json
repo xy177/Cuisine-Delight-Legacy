@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "farmersdelight:skillet"
+    },
+    [
+      {
+        "item": "minecraft:brick"
+      },
+      {
+        "type": "forge:ore_dict",
+        "ore": "ingotBrick"
+      }
+    ]
+  ],
+  "result": {
+    "item": "cuisinedelightlegacy:cuisine_skillet"
+  }
+}

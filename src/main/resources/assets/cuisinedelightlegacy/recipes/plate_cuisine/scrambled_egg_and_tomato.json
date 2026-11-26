@@ -1,0 +1,32 @@
+{
+  "type": "cuisinedelightlegacy:plate_cuisine",
+  "holderItem": "cuisinedelightlegacy:scrambled_egg_and_tomato",
+  "list": [
+    {
+      "bonus": 0.1,
+      "ingredient": [
+        {
+          "item": "minecraft:egg"
+        },
+        {
+          "type": "forge:ore_dict",
+          "ore": "listAllegg"
+        }
+      ],
+      "max": 1.7,
+      "min": 0.3,
+      "score": 1.0
+    },
+    {
+      "bonus": 0.1,
+      "ingredient": {
+        "item": "farmersdelight:tomato"
+      },
+      "max": 1.7,
+      "min": 0.3,
+      "score": 2.0
+    }
+  ],
+  "saturationBonus": 0.0,
+  "saturationBonusModifier": 0.0
+}

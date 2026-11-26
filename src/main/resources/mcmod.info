@@ -1,0 +1,11 @@
+[
+  {
+    "modid": "cuisinedelightlegacy",
+    "name": "Cuisine Delight Legacy",
+    "description": "料理农家乐，Cuisine Delight 的 Minecraft 1.12.2 移植。",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "authorList": ["xy177"],
+    "credits": "Based on Cuisine Delight. Original project: https://www.curseforge.com/minecraft/mc-mods/cuisine-delight"
+  }
+]

@@ -1,0 +1,4 @@
+Cuisine Delight 1.2.10 by Minecraft-LightLand contributors.
+https://github.com/Minecraft-LightLand/Cuisine-Delight/tree/1.21
+Original code and resources are provided under the GNU Lesser General Public License, version 2.1.
+Cuisine Delight Legacy adapts this work for Minecraft 1.12.2 and Forge.

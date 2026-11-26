@@ -1,0 +1,17 @@
+{
+  "type": "cuisinedelightlegacy:plate_cuisine",
+  "holderItem": "cuisinedelightlegacy:fried_rice",
+  "list": [
+    {
+      "bonus": 0.1,
+      "ingredient": {
+        "item": "farmersdelight:rice"
+      },
+      "max": 1.25,
+      "min": 0.75,
+      "score": 2.0
+    }
+  ],
+  "saturationBonus": 0.0,
+  "saturationBonusModifier": 0.0
+}

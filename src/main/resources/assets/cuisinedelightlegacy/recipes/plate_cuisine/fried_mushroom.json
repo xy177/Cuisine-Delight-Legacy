@@ -1,0 +1,17 @@
+{
+  "type": "cuisinedelightlegacy:plate_cuisine",
+  "holderItem": "cuisinedelightlegacy:fried_mushroom",
+  "list": [
+    {
+      "bonus": 0.1,
+      "ingredient": {
+        "type": "cuisinedelightlegacy:mushroom"
+      },
+      "max": 1.25,
+      "min": 0.75,
+      "score": 1.0
+    }
+  ],
+  "saturationBonus": 0.0,
+  "saturationBonusModifier": 0.0
+}

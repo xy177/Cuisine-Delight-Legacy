@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+
+version = '1.0.0'
+group = 'xy177.cuisinedelightlegacy'
+archivesBaseName = 'cuisine-delight-legacy'
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+compileJava.options.encoding = 'UTF-8'
+
+minecraft {
+    mappings channel: 'snapshot', version: '20171003-1.12'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+        }
+
+        server {
+            workingDirectory project.file('run')
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2859'
+    compileOnly files(findProperty('farmersDelightJar') ?: 'E:/download/FarmersDelightLegacy-1.2.0-beta3.jar')
+    compileOnly files(findProperty('farmersFutureDelightJar') ?: 'E:/Farmers-Future-Delight/build/libs/farmers-future-delight-1.6.1.jar')
+    compileOnly files(findProperty('jeiJar') ?: 'E:/BOX/hands-on-delight-legacy-runtime/client/mods/jei_1.12.2-4.16.1.1013.jar')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', '1.12.2'
+    filteringCharset = 'UTF-8'
+
+    filesMatching('mcmod.info') {
+        expand 'version': project.version, 'mcversion': '1.12.2'
+    }
+}
+
+jar.finalizedBy('reobfJar')
+jar.from('LICENSE')

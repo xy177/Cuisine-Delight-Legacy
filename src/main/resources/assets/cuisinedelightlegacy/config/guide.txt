@@ -1,0 +1,56 @@
+料理农家乐自定义食材与装盘菜谱
+Cuisine Delight Legacy custom ingredients and plate recipes
+
+保存为 UTF-8 JSON 后重启游戏或服务端。联机时，在客户端和服务端使用相同的食材与菜谱文件。
+Save the files as UTF-8 JSON and restart the game or server. For multiplayer, use the same ingredient and recipe files on both sides.
+
+食材与熟制品
+Ingredients and cooked items
+
+将 ingredients.example.json 中的条目复制到 ingredients.json 的 entries 数组中。示例会让烤马铃薯可以下锅，并为紫颂果设置新的火候和熟制品。
+Copy the entries from ingredients.example.json into the entries array in ingredients.json. The example enables baked potatoes as skillet ingredients and sets new cooking times and a cooked item for chorus fruit.
+
+ingredient 接受 {"item":"模组ID:物品名"} 或 {"type":"forge:ore_dict","ore":"矿物词典名"}。同一注册名下有多个子类型的物品需要用 data 指定元数据。用数组列出任一可匹配的选项。
+ingredient accepts {"item":"modid:item_name"} or {"type":"forge:ore_dict","ore":"oreDictionaryName"}. Items with multiple subtypes under one registry name require data for metadata. Use an array for alternatives.
+
+type 可填 MEAT（肉类）、VEG（蔬果）、CARB（主食）、SEAFOOD（海鲜）或 NONE（调料）。NONE 表示该食材不计入食材类别加成。
+type accepts MEAT, VEG (vegetables and fruit), CARB (starches), SEAFOOD, or NONE (seasoning). NONE means the ingredient does not contribute to the food type bonus.
+
+min_time 和 max_time 是达到适熟的最短和最长时间，stir_time 是允许的最长翻炒间隔。时间单位为刻。
+min_time and max_time are the lower and upper bounds for proper cooking, and stir_time is the longest allowed interval between stirs. Times are in ticks.
+
+raw_penalty 和 overcook_penalty 分别是夹生与过火或炒焦的品质扣分系数，范围为 0 到 1。
+raw_penalty and overcook_penalty are the quality penalty factors for undercooked and overcooked or burnt ingredients, respectively. Both range from 0 to 1.
+
+size 是每件食材计入的料理份量，nutrition 是用于计算饱和度的营养值，两者均为非负整数。
+size is the serving contribution per item, and nutrition is the value used to calculate saturation. Both are non-negative integers.
+
+effects 可省略或填写数组，例如 [{"effect":"minecraft:speed","level":0,"time":100}]。level 从 0 开始，time 以刻计。适熟且未炒焦的食材会为料理提供相应效果。
+effects is optional and takes an array such as [{"effect":"minecraft:speed","level":0,"time":100}]. level starts at 0 and time is in ticks. Properly cooked, unburnt ingredients contribute these effects to the dish.
+
+cooked 可省略。填写 {"item":"模组ID:熟制品"}，并按需加 data，控制炒锅里的熟制品显示和食用事件中的食材记录。装盘菜谱以投锅时的食材为准。
+cooked is optional. Use {"item":"modid:cooked_item"} with data if needed to choose the cooked item shown in the skillet and reported by food-eaten events. Plate recipes match the ingredient as it was added to the skillet.
+
+默认按 entries 的顺序尝试自定义食材，内置匹配优先。设置 "override": true 后该条目优先于内置匹配，多个覆盖条目同时匹配时以最后一条为准。
+Custom ingredient entries are tried in array order, after built-in matches. Set "override": true to give an entry priority over built-in matches. When several overrides match, the last one wins.
+
+装盘菜谱
+Plate recipes
+
+加载示例食材后，将 recipe.example.json 复制到 recipes 目录并改名为 chorus_fruit.json，即可添加示例菜谱。文件名使用小写英文、数字、下划线、连字符或点。
+After adding the example ingredient, copy recipe.example.json into the recipes directory and rename it chorus_fruit.json to add the example recipe. Use lowercase ASCII letters, digits, underscores, hyphens, or dots in file names.
+
+type 使用 cuisinedelightlegacy:plate_cuisine。holderItem 填已注册的成品物品名。料理农家乐的菜品会使用炒制产生的份量、品质与效果。
+Use cuisinedelightlegacy:plate_cuisine for type. Set holderItem to a registered output item. Cuisine Delight Legacy dishes use the serving count, quality, and effects produced by cooking.
+
+list 为配料条件。每项的 ingredient 可使用上面的配料写法，也可用 {"type":"cuisinedelightlegacy:food_type","food_type":"VEG"} 匹配已有食材类别。
+list contains the ingredient requirements. Each ingredient can use the forms above, or {"type":"cuisinedelightlegacy:food_type","food_type":"VEG"} to match a registered food type.
+
+min 和 max 是配料计入整锅的份量比例，0.5 表示一半。score 是满足该项条件的基础得分，bonus 是额外得分的上限。
+min and max are the ingredient's fractions of the total serving units in the skillet, with 0.5 meaning half. score is the base score for a match, and bonus caps the additional score.
+
+saturationBonus 是 JEI 显示的基础饱和度加成，saturationBonusModifier 决定额外得分对实际饱和度的影响。
+saturationBonus is the base saturation bonus displayed in JEI. saturationBonusModifier determines how additional score affects actual saturation.
+
+用与内置菜谱相同的文件名并设置 "override": true 可替换原菜谱，例如 recipes/fried_mushroom.json。装盘使用得分最高的菜谱，同分时原有菜谱优先。
+Use a built-in recipe's file name with "override": true to replace it, for example recipes/fried_mushroom.json. Plating selects the highest-scoring recipe, preferring existing recipes on a tie.
